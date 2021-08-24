@@ -16,19 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
-        // User::create([
-        //     'name' => 'Ardian',
-        //     'email' => 'arxd@gmail.com',
-        //     'password' => bcrypt('12345')
-        // ]);
-        // User::create([
-        //     'name' => 'Firmansyah',
-        //     'email' => 'firman@gmail.com',
-        //     'password' => bcrypt('12345')
-        // ]);
-
-        User::factory(3)->create();
+        User::factory(5)->create();
         Category::create([
             'name' => 'Programming',
             'slug' => 'programming'
@@ -37,16 +25,11 @@ class DatabaseSeeder extends Seeder
             'name' => 'Design',
             'slug' => 'design'
         ]);
-        // Category::create([
-        //     'name' => 'Berita',
-        //     'slug' => 'berita'
-        // ]);
-        // Category::create([
-        //     'name' => 'Teknologi',
-        //     'slug' => 'teknologi'
-        // ]);
-        Post::factory(20)->create();
-
+        Category::create([
+            'name' => 'Technology',
+            'slug' => 'technology'
+        ]);
+        Post::factory(10)->create();
 
     }
 }

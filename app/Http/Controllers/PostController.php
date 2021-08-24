@@ -13,12 +13,14 @@ class PostController extends Controller
         return view ('blog',[
             "title"=>"All Posts",
             // "posts"=>Post::all(),
-            "posts"=>Post::with(['author','category'])->latest()->get(),
+            "active" =>"blog",
+            "posts"=>Post::latest()->get(),
         ]);
     }
     public function show(Post $post){
         return view('post',[
             "post"=>$post,
+            "active" =>"blog",
             "title"=>$post->title
         ]);
     }
