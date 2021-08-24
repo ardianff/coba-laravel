@@ -1,8 +1,17 @@
 @extends('layouts.main')
 
 @section('container')
-<h1 class="mb-5">{{ $title }} </h1>
-
+<h1 class="mb-3 text-center">{{ $title }} </h1>
+<div class="row justify-content-center mb-3">
+    <div class="col-6">
+        <form action="/blog" method="GET">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search" name="search" value="{{ request('search') }}">
+                <button class="btn btn-warning" type="submit">Search</button>
+              </div>
+        </form>
+    </div>
+</div>
 @if ($posts->count())
 <div class="card mb-3">
     <img src="https://source.unsplash.com/1200x400/?{{ $posts[0]->category->name }}" class="card-img-top" alt="{{ $posts[0]->category->name }}">
@@ -17,9 +26,6 @@
       <a class="text-decoration-none btn btn-primary" href="/post/{{ $posts[0]->slug }}">Read More</a>
     </div>
   </div>
-@else
-    <p class="text-center fs-4">No Post Found</p>
-@endif
 <div class="container">
     <div class="row">
         @foreach($posts->skip(1) as $post)
@@ -42,4 +48,7 @@
         @endforeach
     </div>
 </div>
+@else
+    <p class="text-center fs-4">No Post Found</p>
+@endif
 @endsection
