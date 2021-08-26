@@ -1,1 +1,1 @@
-<h1>Welocme Bung</h1>
+<h1>Welcome Bung</h1>
