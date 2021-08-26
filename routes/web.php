@@ -8,6 +8,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\CategoriesController;
 
 
@@ -27,5 +29,8 @@ Route::get('/about',[AboutController::class,'index']);
 Route::get('/blog',[PostController::class, 'index'] );
 Route::get('post/{post:slug}',[PostController::class, 'show']);
 Route::get('/categories',[CategoriesController::class, 'index']);
-Route::get('/categories/{category:slug}',[CategoriesController::class, 'category']);
-Route::get('/author/{author:username}' , [UserController::class, 'author']);
+// Route::get('/categories/{category:slug}',[CategoriesController::class, 'category']);
+// Route::get('/author/{author:username}' , [UserController::class, 'author']);
+Route::get('/login',[LoginController::class, 'index']);
+Route::get('/register',[RegisterController::class, 'index']);
+Route::post('/register',[RegisterController::class, 'store']);
