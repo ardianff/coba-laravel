@@ -24,22 +24,26 @@ use App\Http\Controllers\DashboardPostController;
 |
 */
 
-Route::get('/',[HomeController::class,'index']);
-Route::get('/about',[AboutController::class,'index']);
-Route::get('/blog',[PostController::class, 'index'] );
-Route::get('post/{post:slug}',[PostController::class, 'show']);
-Route::get('/categories',[CategoriesController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/about', [AboutController::class, 'index']);
+Route::get('/blog', [PostController::class, 'index']);
+Route::get('post/{post:slug}', [PostController::class, 'show']);
+Route::get('/categories', [CategoriesController::class, 'index']);
 // Route::get('/categories/{category:slug}',[CategoriesController::class, 'category']);
 // Route::get('/author/{author:username}' , [UserController::class, 'author']);
-Route::get('/login',[LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login',[LoginController::class, 'authenticate']);
-Route::post('/logout',[LoginController::class, 'logout']);
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::get('/register',[RegisterController::class, 'index'])->middleware('guest');
-Route::post('/register',[RegisterController::class, 'store']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/dashboard',function(){
-    return view('dashboard.index',
-['title'=>'Dashboard',]);
+Route::get('/dashboard', function () {
+    return view(
+        'dashboard.index',
+        ['title' => 'Dashboard',]
+    );
 })->middleware('auth');
 Route::resource('/dashboard/posts', DashboardPostController::class)->middleware('auth');
+
+Route::get('/dashboard/post/autoSlug', [DashboardPostController::class, 'autoSlug'])->middleware('auth');

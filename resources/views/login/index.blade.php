@@ -15,7 +15,7 @@
           </div>
         @endif
         <main class="form-signin">
-            <img class="mb-5 mx-auto d-block" src="https://image.flaticon.com/icons/png/512/2297/2297885.png" alt="" width="72" height="72">
+            <img class="mb-5 mx-auto d-block" src="{{ URL::asset('image/blogging.png') }}" alt="" width="72" height="72">
             <h1 class="h3 mb-3 fw-normal text-center">Please Login</h1>
             <form action="/login" method="post">
                 @csrf
